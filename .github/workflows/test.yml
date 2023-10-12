@@ -10,7 +10,7 @@ on:
       - synchronized
 
 jobs:
-  first-job:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -21,3 +21,18 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy
+        run: echo "Deploying..."
