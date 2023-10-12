@@ -1,4 +1,4 @@
-name: Test
+name: Test Eenie-Meenie
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
       - synchronized
 
 jobs:
-  test:
+  theFirstTest:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -23,6 +23,7 @@ jobs:
         run: npm test
 
   deploy:
+    needs: theFirstTest
     runs-on: ubuntu-latest
     steps:
       - name: Get code
